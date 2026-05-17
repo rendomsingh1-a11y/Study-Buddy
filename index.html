@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyWalaBuddy</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:20px 0;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      backdrop-filter:blur(12px);
+      background:rgba(15,23,42,0.7);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      background:linear-gradient(90deg,#60a5fa,#a855f7);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      color:#dbeafe;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#60a5fa;
+    }
+
+    .btn{
+      padding:12px 25px;
+      border:none;
+      border-radius:12px;
+      background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+      color:white;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 25px rgba(59,130,246,0.4);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding-top:120px;
+      position:relative;
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .hero-text h1{
+      font-size:64px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .gradient-text{
+      background:linear-gradient(90deg,#60a5fa,#c084fc);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+    }
+
+    .secondary-btn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-image{
+      position:relative;
+    }
+
+    .glass-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:25px;
+      padding:35px;
+      backdrop-filter:blur(20px);
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .dashboard{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .dashboard-box{
+      padding:20px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.04);
+    }
+
+    .dashboard-box h3{
+      margin-bottom:10px;
+    }
+
+    /* FEATURES */
+
+    .section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:48px;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+    }
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .feature-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:22px;
+      padding:35px;
+      transition:0.4s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-10px);
+      background:rgba(255,255,255,0.07);
+    }
+
+    .feature-icon{
+      width:65px;
+      height:65px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#3b82f6,#9333ea);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:28px;
+      margin-bottom:25px;
+    }
+
+    .feature-card h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .feature-card p{
+      color:#cbd5e1;
+      line-height:1.7;
+    }
+
+    /* AI SECTION */
+
+    .ai-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .ai-image img{
+      width:100%;
+      border-radius:25px;
+    }
+
+    .ai-text h2{
+      font-size:48px;
+      margin-bottom:20px;
+    }
+
+    .ai-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:25px;
+    }
+
+    .ai-points{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      margin-bottom:35px;
+    }
+
+    .point{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .point span{
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:#3b82f6;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* CTA */
+
+    .cta{
+      text-align:center;
+      padding:100px 20px;
+      border-radius:35px;
+      background:linear-gradient(135deg,#1d4ed8,#7e22ce);
+      margin-bottom:100px;
+    }
+
+    .cta h2{
+      font-size:52px;
+      margin-bottom:20px;
+    }
+
+    .cta p{
+      max-width:700px;
+      margin:auto;
+      color:#e2e8f0;
+      margin-bottom:35px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:50px 0;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-content{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:30px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:25px;
+    }
+
+    .footer-links a{
+      color:#94a3b8;
+    }
+
+    .footer-links a:hover{
+      color:white;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero-content,
+      .ai-section{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text h1{
+        font-size:48px;
+      }
+
+      .section-title h2,
+      .ai-text h2,
+      .cta h2{
+        font-size:38px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container nav-content">
+
+      <div class="logo">StudyWalaBuddy</div>
+
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">AI Tutor</a>
+        <a href="#">Notes</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <button class="btn">Get Started</button>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="hero-text">
+
+        <h1>
+          Your AI Powered
+          <span class="gradient-text">Study Partner</span>
+        </h1>
+
+        <p>
+          Study smarter with AI-generated notes, quizzes,
+          instant explanations, smart revision tools,
+          and your personal learning assistant.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn">Start Learning</button>
+          <button class="btn secondary-btn">Explore</button>
+        </div>
+
+      </div>
+
+      <div class="hero-image">
+
+        <div class="glass-card dashboard">
+
+          <div class="dashboard-box">
+            <h3>📚 Smart Notes</h3>
+            <p>Create notes instantly using AI.</p>
+          </div>
+
+          <div class="dashboard-box">
+            <h3>🤖 AI Tutor</h3>
+            <p>Ask questions and get instant answers.</p>
+          </div>
+
+          <div class="dashboard-box">
+            <h3>📝 MCQ Generator</h3>
+            <p>Generate quizzes from any topic.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Powerful Features</h2>
+        <p>Everything you need to study efficiently</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+
+          <div class="feature-icon">📖</div>
+
+          <h3>Smart Notes</h3>
+
+          <p>
+            Generate beautiful notes from books,
+            PDFs, and lectures instantly.
+          </p>
+
+        </div>
+
+        <div class="feature-card">
+
+          <div class="feature-icon">🎯</div>
+
+          <h3>MCQ Practice</h3>
+
+          <p>
+            Practice topic-wise MCQs generated
+            intelligently by AI.
+          </p>
+
+        </div>
+
+        <div class="feature-card">
+
+          <div class="feature-icon">⚡</div>
+
+          <h3>Quick Revision</h3>
+
+          <p>
+            Revise faster using AI summaries,
+            flashcards and highlights.
+          </p>
+
+        </div>
+
+        <div class="feature-card">
+
+          <div class="feature-icon">🤖</div>
+
+          <h3>AI Tutor</h3>
+
+          <p>
+            Your personal AI teacher available
+            anytime to solve doubts.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- AI SECTION -->
+
+  <section class="section">
+
+    <div class="container ai-section">
+
+      <div class="ai-image">
+
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="students">
+
+      </div>
+
+      <div class="ai-text">
+
+        <h2>
+          Study Better with
+          <span class="gradient-text">AI Technology</span>
+        </h2>
+
+        <p>
+          Transform your learning experience with
+          intelligent study tools and personalized
+          recommendations.
+        </p>
+
+        <div class="ai-points">
+
+          <div class="point">
+            <span>✓</span>
+            <p>AI generated explanations</p>
+          </div>
+
+          <div class="point">
+            <span>✓</span>
+            <p>Personalized learning path</p>
+          </div>
+
+          <div class="point">
+            <span>✓</span>
+            <p>Interactive quizzes & tests</p>
+          </div>
+
+        </div>
+
+        <button class="btn">Try AI Tutor</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="container">
+
+    <div class="cta">
+
+      <h2>Start Your Smart Learning Journey</h2>
+
+      <p>
+        Join thousands of students improving
+        their studies using AI powered tools.
+      </p>
+
+      <button class="btn">Join Now</button>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-content">
+
+      <div>
+        <h2 class="logo">StudyWalaBuddy</h2>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+        <a href="#">Contact</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
